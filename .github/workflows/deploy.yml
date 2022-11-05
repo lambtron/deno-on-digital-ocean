@@ -43,5 +43,8 @@ jobs:
         script: |
           # Login to Digital Ocean Container Registry
           docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
+          # Stop and remove a running image.
+          docker stop ${{ env.IMAGE_NAME }}
+          docker rm ${{ env.IMAGE_NAME }}
           # Run a new container from a new image
           docker run -d --restart always -it -p 8000:8000 --name ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
