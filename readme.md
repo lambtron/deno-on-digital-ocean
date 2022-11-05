@@ -16,4 +16,5 @@ and copy the public key.
 
 SSH into your droplet. create a rsa private key. copy the public key to "authorized_keys".
 copy the private key. use the private key as the github action private key.
+also install `docker` command.
 
