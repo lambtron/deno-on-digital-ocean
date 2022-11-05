@@ -34,5 +34,5 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USERNAME }}
         key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
         script: |
-          cd /root/app
+          cd /app
           ls
