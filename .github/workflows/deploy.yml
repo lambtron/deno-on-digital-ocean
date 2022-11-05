@@ -23,12 +23,8 @@ jobs:
     - name: Build container image
       run: docker compose -f docker-compose.yml build
 
-    - name: Test variable
-      run: echo $SHORT_SHA \
-           echo ${ SHORT_SHA }
-
     - name: Tag container image
-      run: docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      run: docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}
 
     - name: Install `doctl`
       uses: digitalocean/action-doctl@v2
@@ -54,4 +50,4 @@ jobs:
           docker stop ${{ env.IMAGE_NAME }}
           docker rm ${{ env.IMAGE_NAME }}
           # Run a new container from a new image
-          docker run -d --restart always -it -p 8000:8000 --name ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$SHORT_SHA
+          docker run -d --restart always -it -p 8000:8000 --name ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}
