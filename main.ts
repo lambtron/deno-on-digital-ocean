@@ -3,7 +3,7 @@ import { Application } from "https://deno.land/x/oak/mod.ts";
 const app = new Application();
 
 app.use((ctx) => {
-  ctx.response.body = "Hello, from Deno and Digital Ocean!";
+  ctx.response.body = "Hello from Deno and Digital Ocean!";
 });
 
 await app.listen({ port: 8000 });
