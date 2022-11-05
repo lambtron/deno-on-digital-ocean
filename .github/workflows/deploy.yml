@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_push:
     name: Build, Push, and Deploy
     runs-on: ubuntu-latest
     steps:
@@ -27,13 +27,18 @@ jobs:
     - name: Push image to Digital Ocean Container Registry
       run: docker compose -f docker-compose.yml push
 
+  deploy:
+    runs-on: ubunto-latest
+    needs: build_and_push
+
+    steps:
     - name: Deploy via SSH
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@0.1.5
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSHKEY }}
-        port: ${{ secrets.PORT }}
+        host: ${{ secrets.DIGITALOCEAN_HOST }}
+        username: ${{ secrets.DIGITALOCEAN_USERNAME }}
+        password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
+        port: ${{ secrets.DIGITALOCEAN_PORT }}
         script: |
           cd /root/app
           ls
