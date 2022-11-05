@@ -33,6 +33,7 @@ jobs:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
         username: ${{ secrets.DIGITALOCEAN_USERNAME }}
         password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
+        key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
         script: |
           cd /root/app
           ls
