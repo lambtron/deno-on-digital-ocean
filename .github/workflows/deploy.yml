@@ -23,8 +23,12 @@ jobs:
     - name: Build container image
       run: docker compose -f docker-compose.yml build
 
+    - name: Test variable
+      run: echo $SHORT_SHA \
+           echo ${ SHORT_SHA }
+
     - name: Tag container image
-      run: docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(echo $SHORT_SHA)
+      run: docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
     - name: Install `doctl`
       uses: digitalocean/action-doctl@v2
