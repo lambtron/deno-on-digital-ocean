@@ -35,7 +35,7 @@ jobs:
       run: doctl registry login --expiry-seconds 600
 
     - name: Push image to Digital Ocean Container Registry
-      run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:{{ env.TAG }}
+      run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
     - name: Deploy via SSH
       uses: appleboy/ssh-action@master
