@@ -3,9 +3,15 @@
 Digital Ocean is a popular cloud infrastructure provider offering a variety of
 hosting services ranging from networking, to compute, to storage.
 
-Here's a step by step guide to deploying a Deno app to Digital Ocean. First,
-we'll manually deploy the app using Docker. Then, we'll automate the process
-with a GitHub Action.
+Here's a step by step guide to deploying a Deno app to Digital Ocean using
+Docker and GitHub Actions.
+
+The pre-requisite for this is:
+
+- [`docker` CLI](https://docs.docker.com/engine/reference/commandline/cli/)
+- a [GitHub account](https://github.com)
+- a [Digital Ocean account](https://digitalocean.com)
+- [`doctl` CLI](https://docs.digitalocean.com/reference/doctl/how-to/install/)
 
 ## Create Dockerfile and docker-compose.yml
 
