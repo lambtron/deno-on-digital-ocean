@@ -66,7 +66,7 @@ services:
 Let's test this locally by running `docker compose up` and going to
 `localhost:8000`.
 
-![]()
+![Hello from localhost](/static/hello-from-localhost.png)
 
 It works!
 
@@ -95,7 +95,7 @@ docker push registry.digitalocean.com/deno-on-digital-ocean/deno-image:new
 You should see your new `deno-image` with the `new` tag in your
 [Digital Ocean container registry](https://cloud.digitalocean.com/registry):
 
-![]()
+![New deno image on Digital Ocean container registry](/static/new-deno-image-on-digital-ocean-container-registry.png)
 
 Perfect!
 
@@ -118,7 +118,7 @@ docker run -d --restart always -it -p 8000:8000 --name deno-image registry.digit
 
 Using our browser to go to the Digital Ocean address, we now see:
 
-![]()
+![Hello world from Digital Ocean](/static/hello-from-deno-and-digital-ocean.png)
 
 Boom!
 
@@ -261,5 +261,3 @@ jobs:
 
 When you push to GitHub, this yml file is automatically detected, triggering the
 Deploy action.
-
-## What's next?
